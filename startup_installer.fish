@@ -4,8 +4,7 @@
 sudo ntpdate ntp.nict.jp
 
 # mirrorの変更とシステムアップデート
-sudo pacman-mirrors --fasttrack
-yes | sudo pacman -Syy && sudo pacman -Syyu
+yes | sudo pacman-mirrors --fasttrack && sudo pacman -Syyu
 
 # 日本語入力環境
 yes | sudo pacman -S fcitx-im fcitx-mozc fcitx-configtool
