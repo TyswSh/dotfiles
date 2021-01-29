@@ -2,12 +2,12 @@
 
 ## Using apps
 - Firefox
-- neovim
-- code(VSCode)
+- Neovim
+- Code(VSCode)
 - PyCharm
 - IntelliJ IDEA
-- rofi
-- fish
+- Rofi
+- Fish
 
 ## フォント
 1. Adobe Source Han Code JP
@@ -16,8 +16,8 @@
 2. Adobe Source Han Sans JP
     - https://github.com/adobe-fonts/source-han-sans/blob/master/README-JP.md
 
-3. nerd fonts
-    Souce Code Nerd Font
+3. Nerd fonts
+    Souce Code Nerd Font  
     *name:SauceCodePro Nerd Font
     - https://github.com/ryanoasis/nerd-fonts
 4. Ricty Diminished Discord
