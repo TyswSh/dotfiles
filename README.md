@@ -1,6 +1,15 @@
 # dotfiles
 
-## 
+## Using Apps
+- Firefox
+- neovim
+- code(VSCode)
+- PyCharm
+- IntelliJ IDEA
+- rofi
+- fish
+- i3wm
+
 ## フォント
 1. Adobe Source Han Code JP
     - https://github.com/adobe-fonts/source-han-code-jp
@@ -10,7 +19,7 @@
 
 3. nerd fonts
     Souce Code Nerd Font
-    ＊名前:SauceCodePro Nerd Font
+    *name:SauceCodePro Nerd Font
     - https://github.com/ryanoasis/nerd-fonts
 4. Ricty Diminished Discord
     - https://github.com/edihbrandon/RictyDiminished
