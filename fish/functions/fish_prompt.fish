@@ -1,19 +1,37 @@
-function fish_prompt --description 'Informative prompt'
-    #Save the return status of the previous command
-    set -l last_pipestatus $pipestatus
+_tide_detect_os
+_tide_git_prompt_set_vars
 
-    switch "$USER"
-        case root toor
-            printf '%s@%s %s%s%s# ' $USER (prompt_hostname) (set -q fish_color_cwd_root
-                                                             and set_color $fish_color_cwd_root
-                                                             or set_color $fish_color_cwd) \
-                (prompt_pwd) (set_color normal)
-        case '*'
-            set -l pipestatus_string (__fish_print_pipestatus "[" "] " "|" (set_color $fish_color_status) \
-                                      (set_color --bold $fish_color_status) $last_pipestatus)
+# Set things that wont change
+set -g _tide_left_prompt_display_var _tide_left_prompt_display_$fish_pid
 
-            printf '[%s] %s%s@%s %s%s %s%s%s \f\r> ' (date "+%H:%M:%S") (set_color brblue) \
-                $USER (prompt_hostname) (set_color $fish_color_cwd) $PWD $pipestatus_string \
-                (set_color normal)
-    end
+set -gx _tide_fish_pid $fish_pid
+set -x fish_term24bit $fish_term24bit
+
+function fish_prompt
+    set -lx _tide_last_pipestatus $pipestatus
+    set -lx _tide_jobs_number (jobs --pid | count)
+
+    fish --command "
+    set CMD_DURATION $CMD_DURATION
+    set COLUMNS $COLUMNS
+    set fish_bind_mode $fish_bind_mode
+
+    command kill $_tide_last_pid 2>/dev/null
+    set -U _tide_left_prompt_display_$fish_pid (_tide_prompt)
+    " >&- & # >&- closes stdout. See https://github.com/fish-shell/fish-shell/issues/7559
+
+    set -g _tide_last_pid (jobs --last --pid)
+    disown $_tide_last_pid 2>/dev/null
+
+    string unescape $$_tide_left_prompt_display_var
+end
+
+function _tide_refresh_prompt --on-variable _tide_left_prompt_display_$fish_pid --on-variable _tide_right_prompt_display_$fish_pid
+    commandline --function force-repaint
+end
+
+# Double underscores to avoid erasing this function on uninstall
+function __tide_on_fish_exit --on-event fish_exit
+    set -e _tide_left_prompt_display_$fish_pid
+    set -e _tide_right_prompt_display_$fish_pid
 end
