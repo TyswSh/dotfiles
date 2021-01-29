@@ -1,6 +1,6 @@
 # dotfiles
 
-## Using Apps
+## Using apps
 - Firefox
 - neovim
 - code(VSCode)
@@ -8,7 +8,6 @@
 - IntelliJ IDEA
 - rofi
 - fish
-- i3wm
 
 ## フォント
 1. Adobe Source Han Code JP
