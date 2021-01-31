@@ -22,6 +22,8 @@ set incsearch
 set laststatus=2
 set showmode
 set showcmd
+set clipboard=unnamedplus
+set wildmenu
 
 inoremap <silent> jj <ESC>
 
@@ -43,27 +45,20 @@ nnoremap tp :tabN<cr>
 nnoremap nh :new<cr>
 nnoremap nv :vnew<cr>
 
+
 nnoremap <silent> sh :split<cr>
 nnoremap <silent> sv :vsplit<cr>
 
 let mapleader = "\<Space>"
 
-" ファイルマネージャー起動
-nnoremap <silent> <Leader>f :<c-u>Defx<cr>
+nnoremap <Leader>s :save
 
-nnoremap <Leader>s :w<CR>
-nnoremap <Leader>ss :save
-
-" Leader + hjklでウィンドウ間を移動
+" Leader+w + hjklでウィンドウ間を移動
 nmap <Leader>w [window]
 nnoremap [window]h <C-w>h
 nnoremap [window]j <C-w>j
 nnoremap [window]k <C-w>k
 nnoremap [window]l <C-w>l
-"nnoremap <c-h> <c-w>h
-"nnoremap <c-j> <c-w>j
-"nnoremap <c-k> <c-w>k
-"nnoremap <c-l> <c-w>l
 
 " カーソル移動を早く
 nnoremap <Leader>h ^
@@ -109,3 +104,4 @@ if dein#check_install()
   call dein#install()
 endif
 
+call map(dein#check_clean(), "delete(v:val, 'rf')")
