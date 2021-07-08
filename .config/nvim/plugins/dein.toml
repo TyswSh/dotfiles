@@ -2,17 +2,46 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'vim-airline/vim-airline'
-depends = ['/vim-airline-themes']
+repo = 'Shougo/denite.nvim'
+hook_add = '''
+    source ~/.config/nvim/plugins/plugin_denite.vim
+'''
 
 [[plugins]]
-repo = 'vim-airline/vim-airline-themes'
+repo = 'Shougo/unite-outline'
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+[[plugins]]
+repo = 'Shougo/neoyank.vim'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
 hook_add = '''
-  set laststatus=2
-  let g:airline_powerline_fonts = 1
-  let g:airline#extensions#tabline#enabled = 1
-  let g:airline#extensions#tabline#buffer_idx_mode = 1
-  let g:airline#extensions#whitespace#mixed_indent_algo = 1
-  let g:airline_theme = 'bubblegum'
+    let g:lightline = { 'colorscheme': 'onedark' }
 '''
+
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+hook_add = '''
+    source ~/.config/nvim/plugins/plugin_defx.vim
+'''
+
+[[plugins]]
+repo = 'roxma/nvim-yarp'
+
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
+
+[[plugins]]
+repo = 'joshdick/onedark.vim'
+hook_add = '''
+    syntax on
+    autocmd VimEnter * nested colorscheme onedark
+    set background=dark
+'''
+
+[[plugin]]
+repo = 'tpope/vim-surround'
 

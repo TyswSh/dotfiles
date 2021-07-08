@@ -19,13 +19,23 @@ set showtabline=2
 set noshowmode
 set ruler
 set incsearch
+set inccommand=split
 set laststatus=2
 set showmode
 set showcmd
 set clipboard=unnamedplus
 set wildmenu
+set mouse=a
+set nocompatible
+set wildmenu
 
 inoremap <silent> jj <ESC>
+
+inoremap <silent> <C-h> <Left>
+inoremap <silent> <C-l> <Right>
+inoremap <silent> <C-j> <Down>
+inoremap <silent> <C-k> <Up>
+
 
 nmap <silent> <ESC><ESC> :nohlsearch<CR>
 nnoremap n nzz
@@ -39,19 +49,25 @@ nnoremap j gj
 nnoremap k gk
 
 nnoremap tt :tabnew<cr>
-nnoremap tc :tabclose<cr>
-nnoremap tn :tabn<cr>
-nnoremap tp :tabN<cr>
 nnoremap nh :new<cr>
 nnoremap nv :vnew<cr>
+nnoremap tc :tabclose<cr>
+nnoremap tn :tabn<cr>
+nnoremap tp :tabp<cr>
 
+" ctl-h replace
+nnoremap <C-h> :%s///gc
 
 nnoremap <silent> sh :split<cr>
 nnoremap <silent> sv :vsplit<cr>
 
 let mapleader = "\<Space>"
 
-nnoremap <Leader>s :save
+ nnoremap <silent> <Leader>fd :Defx<CR>
+
+" add name and save file
+nnoremap <Leader>s :save 
+
 
 " Leader+w + hjklでウィンドウ間を移動
 nmap <Leader>w [window]
@@ -65,6 +81,7 @@ nnoremap <Leader>h ^
 nnoremap <Leader>l $
 nnoremap <Leader>j }
 nnoremap <Leader>k {
+nnoremap <Leader>m %
 
 " Shift + 矢印でウィンドウサイズを変更
 nnoremap <s-left> <c-w><<cr>
@@ -83,7 +100,7 @@ set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
 if dein#load_state('~/.cache/dein')
   call dein#begin('~/.cache/dein')
-  
+
   let s:toml_dir = expand('~/.config/nvim/plugins')
   call dein#load_toml(s:toml_dir . '/dein.toml', {'lazy': 0})
   call dein#load_toml(s:toml_dir . '/dein_lazy.toml', {'lazy': 1})
@@ -96,12 +113,9 @@ if dein#load_state('~/.cache/dein')
   call dein#save_state()
 endif
 
-colorscheme gruvbox
-" colorscheme vimtom
-" colorscheme onedark
-
 if dein#check_install()
   call dein#install()
 endif
 
 call map(dein#check_clean(), "delete(v:val, 'rf')")
+

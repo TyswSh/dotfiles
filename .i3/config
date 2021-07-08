@@ -1,11 +1,8 @@
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod1
 
-# Configure border style <normal|1pixel|pixel xx|none|pixel>
-default_border pixel 1
-default_floating_border normal
-
-hide_edge_borders none
+# Configure border style <normal|1pixel|pixel xx|none|pixel> default_border pixel 1 default_floating_border normal
+default_border none
 
 bindsym $mod+u border none
 bindsym $mod+y border pixel 1
@@ -158,8 +155,8 @@ bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
 # Open applications on specific workspaces
-# assign [class="Thunderbird"] $ws1
-# assign [class="Pale moon"] $ws2
+assign [class="Firefox"] $ws1
+# assign [class="terminal"] $ws2
 assign [class="Pcmanfm"] $ws3
 # assign [class="Skype"] $ws5
 
@@ -191,6 +188,8 @@ for_window [class="Skype"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
+# when you installed jetbrain's toolbox
+for_window [class="JetBrains Toolbox"] floating enable enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -288,16 +287,15 @@ set_from_resource $term_color15    color15
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
-	i3bar_command i3bar
-	status_command i3status
-#	position bottom
-    position top
+   i3bar_command i3bar
+   status_command i3status
+   position bottom
+   position top
 
-	bindsym button4 nop
-	bindsym button5 nop
+    bindsym button4 nop
+    bindsym button5 nop
     font xft:Source Han Code JP R 12
-	strip_workspace_numbers yes
-
+    strip_workspace_numbers yes
 
     colors {
         # background #222D31
